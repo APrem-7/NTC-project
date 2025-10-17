@@ -17,12 +17,9 @@ function InputPanel({ cipher, setCipher, inputText, setInputText, keyValue, setK
         }}
       >
         <option value="caesar">Caesar Cipher</option>
-        <option value="atbash">Atbash Cipher</option>
         <option value="vigenere">Vigenère Cipher</option>
         <option value="playfair">Playfair Cipher</option>
         <option value="hill">Hill Cipher (2×2)</option>
-        <option value="otp">One-Time Pad</option>
-        <option value="xor">XOR Stream Cipher</option>
         <option value="sha256">SHA-256 Hash</option>
       </select>
 

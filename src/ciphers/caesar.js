@@ -2,6 +2,9 @@
 
 export function caesar(text, k, decrypt = false) {
   const shift = decrypt ? (26 - (k % 26)) % 26 : k % 26
+  //For encryption: shift = k % 26
+  //For decryption: shift = 26 - (k % 26) (shifts backwards)
+
   
   return [...text].map(ch => {
     if (/[a-z]/i.test(ch)) {

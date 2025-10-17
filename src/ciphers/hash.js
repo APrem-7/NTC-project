@@ -41,8 +41,8 @@ export function sha256Explain(text, hash) {
   
   // Show avalanche effect example
   html += `
-    <div style="background: #fff3cd; padding: 12px; border-radius: 6px; margin: 16px 0; font-size: 0.9rem;">
-      <strong>🔍 Avalanche Effect Demonstration:</strong><br>
+    <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin: 16px 0; font-size: 0.9rem;">
+      <strong> Avalanche Effect Demonstration:</strong><br>
       Try changing just one character in your input and hash again — the entire hash will be completely different!
       This property makes hashes excellent for integrity verification and password storage.
     </div>
@@ -63,7 +63,7 @@ export function sha256Explain(text, hash) {
   
   html += `
     <div class="security-note">
-      <strong>✓ Security Note:</strong> SHA-256 is currently considered secure. 
+      <strong> Security Note:</strong> SHA-256 is currently considered secure. 
       No practical attacks are known. It's part of the SHA-2 family and widely used in TLS, blockchain, and digital signatures.
     </div>
   `

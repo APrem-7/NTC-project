@@ -6,10 +6,7 @@ export const cipherConfig = {
     defaultKey: '3',
     supportsDecrypt: true
   },
-  atbash: {
-    needsKey: false,
-    supportsDecrypt: false
-  },
+  // atbash removed
   vigenere: {
     needsKey: true,
     keyPlaceholder: 'Enter keyword (letters only)',
@@ -31,20 +28,8 @@ export const cipherConfig = {
     defaultKey: '6,24,1,13',
     supportsDecrypt: true
   },
-  otp: {
-    needsKey: true,
-    keyPlaceholder: 'Key (leave empty for random)',
-    keyHint: 'One-time pad (auto-generated if empty)',
-    defaultKey: '',
-    supportsDecrypt: true
-  },
-  xor: {
-    needsKey: true,
-    keyPlaceholder: 'Enter XOR key',
-    keyHint: 'Any string as XOR key',
-    defaultKey: 'SECRET',
-    supportsDecrypt: false
-  },
+  // otp removed
+  // xor removed
   sha256: {
     needsKey: false,
     supportsDecrypt: false
