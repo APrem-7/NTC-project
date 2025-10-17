@@ -1,0 +1,22 @@
+{
+  "name": "ntc-project",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "From Caesar to SHA - Interactive Cryptography Evolution Demo",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["cryptography", "ciphers", "education", "react"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.10"
+  }
+}
