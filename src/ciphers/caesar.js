@@ -1,15 +1,16 @@
 // Caesar Cipher Implementation
 
 export function caesar(text, k, decrypt = false) {
-  const shift = decrypt ? (26 - (k % 26)) % 26 : k % 26
-  //For encryption: shift = k % 26
-  //For decryption: shift = 26 - (k % 26) (shifts backwards)
-
+  const shift = k % 26
   
   return [...text].map(ch => {
     if (/[a-z]/i.test(ch)) {
       const base = ch === ch.toUpperCase() ? 65 : 97
-      return String.fromCharCode(((ch.charCodeAt(0) - base + shift) % 26) + base)
+      const index = ch.charCodeAt(0) - base
+      const newIndex = decrypt 
+        ? (index - shift + 26) % 26  // Fixed: subtract for decryption
+        : (index + shift) % 26
+      return String.fromCharCode(newIndex + base)
     }
     return ch
   }).join('')

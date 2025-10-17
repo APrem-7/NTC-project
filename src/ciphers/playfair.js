@@ -74,14 +74,16 @@ export function playfair(text, key, decrypt = false) {
     
     if (row1 === row2) {
       // Same row - shift columns
-      newA = matrix[row1][(col1 + (decrypt ? 4 : 1)) % 5]
-      newB = matrix[row2][(col2 + (decrypt ? 4 : 1)) % 5]
+      // Fixed: use proper modulo for left shift in decryption
+      newA = matrix[row1][(col1 + (decrypt ? -1 : 1) + 5) % 5]
+      newB = matrix[row2][(col2 + (decrypt ? -1 : 1) + 5) % 5]
     } else if (col1 === col2) {
       // Same column - shift rows
-      newA = matrix[(row1 + (decrypt ? 4 : 1)) % 5][col1]
-      newB = matrix[(row2 + (decrypt ? 4 : 1)) % 5][col2]
+      // Fixed: use proper modulo for up shift in decryption
+      newA = matrix[(row1 + (decrypt ? -1 : 1) + 5) % 5][col1]
+      newB = matrix[(row2 + (decrypt ? -1 : 1) + 5) % 5][col2]
     } else {
-      // Rectangle - swap columns
+      // Rectangle - swap columns (same for encrypt/decrypt)
       newA = matrix[row1][col2]
       newB = matrix[row2][col1]
     }

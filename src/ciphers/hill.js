@@ -14,15 +14,17 @@ function determinant2x2(matrix) {
 
 function inverse2x2(matrix) {
   const det = determinant2x2(matrix)
-  const detInv = modInverse(((det % 26) + 26) % 26, 26)
+  const detMod = ((det % 26) + 26) % 26
+  const detInv = modInverse(detMod, 26)
   
   if (detInv === null) {
-    throw new Error('Matrix is not invertible modulo 26')
+    throw new Error('Matrix is not invertible (determinant has no inverse mod 26)')
   }
   
+  // Fixed: proper inverse calculation
   return [
-    [(matrix[1][1] * detInv) % 26, (-matrix[0][1] * detInv + 26 * 26) % 26],
-    [(-matrix[1][0] * detInv + 26 * 26) % 26, (matrix[0][0] * detInv) % 26]
+    [((matrix[1][1] * detInv) % 26 + 26) % 26, ((-matrix[0][1] * detInv) % 26 + 26) % 26],
+    [((-matrix[1][0] * detInv) % 26 + 26) % 26, ((matrix[0][0] * detInv) % 26 + 26) % 26]
   ]
 }
 
@@ -44,7 +46,7 @@ export function hill(text, key, decrypt = false) {
   // Prepare text (only letters, uppercase)
   const cleanText = text.toUpperCase().replace(/[^A-Z]/g, '')
   
-  // Pad if odd length
+  // Pad if odd length basically add X
   const workText = cleanText.length % 2 === 0 ? cleanText : cleanText + 'X'
   
   let result = ''
@@ -53,8 +55,9 @@ export function hill(text, key, decrypt = false) {
     const p1 = workText.charCodeAt(i) - 65
     const p2 = workText.charCodeAt(i + 1) - 65
     
-    const c1 = (matrix[0][0] * p1 + matrix[0][1] * p2) % 26
-    const c2 = (matrix[1][0] * p1 + matrix[1][1] * p2) % 26
+    // Fixed: proper modulo arithmetic to handle negative numbers
+    const c1 = ((matrix[0][0] * p1 + matrix[0][1] * p2) % 26 + 26) % 26
+    const c2 = ((matrix[1][0] * p1 + matrix[1][1] * p2) % 26 + 26) % 26
     
     result += String.fromCharCode(c1 + 65) + String.fromCharCode(c2 + 65)
   }

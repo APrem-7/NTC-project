@@ -1,4 +1,19 @@
 // Vigenère Cipher Implementation
+/*Vigenère Cipher
+
+You pick a word or text as the key (like "LEMON").
+
+Each letter of that word has its own shift value.
+
+L = +11
+
+E = +4
+
+M = +12
+
+O = +14
+
+N = +13 */
 
 export function vigenere(text, key, decrypt = false) {
   // Clean key to only alphabetic characters
@@ -18,8 +33,12 @@ export function vigenere(text, key, decrypt = false) {
     const k = key[i % key.length].charCodeAt(0) - 97
     i++
     
-    const shift = decrypt ? (26 - k) % 26 : k
-    return String.fromCharCode(base + ((p + shift) % 26))
+    // Fixed: proper subtraction for decryption
+    const result = decrypt 
+      ? (p - k + 26) % 26 
+      : (p + k) % 26
+      
+    return String.fromCharCode(base + result)
   }).join('')
 }
 
